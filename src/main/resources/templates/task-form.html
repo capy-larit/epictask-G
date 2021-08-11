@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>Epic Task</h1>
+	
+	<h2>Cadastrar Tarefa</h2>
+	
+	<form action="/task" method="post">
+		<label for="title">Título</label>
+		<input name="title" id="title" />
+		
+		<label for="description">Descrição</label>
+		<textarea name="description" id="description" rows="" cols=""></textarea>
+		
+		<label for="points">Pontos</label>
+		<input type="range" name="points" id="points">
+		
+		<a href="/task">Cancelar</a>
+		<button>Salvar</button>
+		
+	</form>
+
+</body>
+</html>
