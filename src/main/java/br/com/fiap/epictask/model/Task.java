@@ -18,7 +18,7 @@ public class Task {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "O título é obrigatório")
+	@NotBlank(message = "{task.title.blank}")
 	private String title;
 	
 	@Size(min = 10, message = "A descrição deve ter pelo penos 10 caracteres")
