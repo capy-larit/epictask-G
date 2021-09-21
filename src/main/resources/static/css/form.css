@@ -18,6 +18,8 @@
 }
 
 .form input[type=text],
+.form input[type=email],
+.form input[type=password],
 .form textarea
 {
 	background: rgba(255, 255, 255, 0.8);
@@ -41,6 +43,8 @@
 
 
 .form input[type=text]:focus,
+.form input[type=email]:focus,
+.form input[type=password]:focus,
 .form textarea:focus
 {
 	border: 3px solid #3F5EFB;
@@ -51,4 +55,12 @@
 	display: flex;
 	justify-content: space-between;
 	
+}
+
+.invalid{
+	border: 3px solid #7A0031 !important;
+}
+
+.error{
+	color: #7A0031;
 }
