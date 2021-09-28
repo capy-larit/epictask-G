@@ -5,7 +5,7 @@
 
 <body>
 
-	<h1>EPIC TASK</h1>
+	<h1 th:include="_template :: home"></h1>
 
 	<div class="alert" th:if="${message != null}" th:text="${message}"></div>
 
@@ -19,6 +19,7 @@
 		
 		<main class="content">
 			<div class="user" th:each="user : ${users}">
+				<img class="avatar" alt="" th:src="${user.avatarUrl}">
 				<div class="user-info">
 					<h4 th:text="${user.name}"></h4>
 					<p th:text="${user.email}"></p>

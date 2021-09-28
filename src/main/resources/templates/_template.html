@@ -9,8 +9,15 @@
 	<link rel="stylesheet" type="text/css" th:href="@{~/css/menu.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{~/css/tasks.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{~/css/users.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{~/css/home.css}">
 </head>
 <body>
+
+<h1 th:fragment="home">
+	<a href="/">
+		EPIC TASK
+	</a>
+</h1>
 
 <nav th:fragment="menu(page)">
 	<ul class="menu">
