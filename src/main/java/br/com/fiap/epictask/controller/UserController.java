@@ -34,7 +34,7 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView("users");
 		List<User> users = repository.findAll();
 		modelAndView.addObject("users", users);
-		System.out.println(users);
+		
 		return modelAndView;
 	}
 	

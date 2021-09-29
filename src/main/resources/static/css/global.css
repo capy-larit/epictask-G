@@ -5,11 +5,28 @@
 }
 
 body {
-    height: 100%;
+    height: 100vh;
     background: linear-gradient(90deg, #FC466B -0.4%, #3F5EFB 100.44%);
     color: #FFFFFF;
     font-family: 'Quicksand', sans-serif;
 }
+
+header{
+	display: flex;
+	justify-content: space-between;
+}
+
+.login-itens{
+	height: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-itens span{
+	margin: 1rem;
+}
+
 
 h1 {
     font-family: Bebas Neue;
@@ -81,6 +98,11 @@ button.icon,
     background: linear-gradient(147.57deg, rgba(0, 255, 102, 0.6) 0%, rgba(0, 255, 102, 0.06) 100%);
     backdrop-filter: blur(61px);
     border-radius: 10px;
+}
+
+.alert.error{
+	background: linear-gradient(147.57deg, rgba(255, 0, 102, 0.6) 0%, rgba(255, 0, 102, 0.06) 100%);
+	color: #FFF;
 }
 
 .avatar {

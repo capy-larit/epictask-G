@@ -5,7 +5,7 @@
 
 <body>
 
-	<h1 th:include="_template :: home"></h1>
+	<header th:include="_template :: header"></header>
 	
 	<div class="alert" th:if="${message != null}" th:text="${message}"></div>
 	
@@ -27,12 +27,36 @@
 				<p th:text="${task.description}"></p>
 				<meter min="0" max="100" th:value="${task.status}"></meter>
 				<div class="task-actions">
-					<img class="avatar" alt="ower" src="https://avatars.githubusercontent.com/u/5585727?v=4">
-					<button class="icon primary" th:title="#{task.catch}">
-						<span class="material-icons">
-							back_hand
-						</span>
-					</button>
+					
+					<span>
+						<img 
+							th:if="${task.user != null}"
+							class="avatar" 
+							alt="ower" 
+							th:src="${task.user.avatarUrl}"
+						>
+					</span>
+					
+					<a 
+						th:href="${'/task/hold/' + task.id}"
+						class="button icon primary" 
+						th:title="#{task.catch}" 
+						th:if="${task.user == null}">
+							<span class="material-icons">
+								back_hand
+							</span>
+					</a>
+					
+					<a 
+						th:href="${'/task/release/' + task.id}"
+						class="button icon primary" 
+						th:title="#{task.release}" 
+						th:if="${task.user == #authentication.getPrincipal()}">
+							<span class="material-icons">
+								waving_hand
+							</span>
+					</a>
+					
 				</div>
 			</div>
 		

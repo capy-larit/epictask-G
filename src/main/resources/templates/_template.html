@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html 
+	xmlns:th="http://thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head th:fragment="head">
 	<meta charset="UTF-8">
@@ -13,11 +15,21 @@
 </head>
 <body>
 
-<h1 th:fragment="home">
-	<a href="/">
-		EPIC TASK
-	</a>
-</h1>
+<header th:fragment="header">
+	<h1 >
+		<a href="/">
+			EPIC TASK
+		</a>
+	</h1>
+	
+	<div class="login-itens">
+		<span th:text="${#authentication.getPrincipal().getName()}"></span>
+		<img class="avatar" alt="" th:src="${#authentication.getPrincipal().getAvatarUrl()}">
+		<a href="/logout" title="sair">
+			<span class="material-icons">logout</span>
+		</a>
+	</div>
+</header>
 
 <nav th:fragment="menu(page)">
 	<ul class="menu">
@@ -29,7 +41,7 @@
 				<span th:text="#{menu.task}"></span>
 			</a>
 		</li>
-		<li>
+		<li sec:authorize="hasRole('ROLE_ADMIN')">
 			<a href="/user" th:classappend="${page=='user'}?active">
 				<span class="material-icons">
 					perm_identity

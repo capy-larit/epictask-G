@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+
+<body>
+
+	<h1>Epic Task</h1>
+
+	<section class="card">
+		<div class="alert error">
+			<p th:text="${message}">um erro aconteceu</p>
+		</div>
+		
+		<button onclick="history.back()">voltar</button>
+	</section>
+
+</body>
+</html>
