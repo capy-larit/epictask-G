@@ -9,6 +9,7 @@ body {
     background: linear-gradient(90deg, #FC466B -0.4%, #3F5EFB 100.44%);
     color: #FFFFFF;
     font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
 }
 
 header{

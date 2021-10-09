@@ -4,15 +4,23 @@
 
 <body>
 
-	<h1>Epic Task</h1>
+	<main class="error">
 
-	<section class="card">
-		<div class="alert error">
-			<p th:text="${message}">um erro aconteceu</p>
-		</div>
-		
-		<button onclick="history.back()">voltar</button>
-	</section>
+			<div class="card">
+				<h2>Oops! Um erro aconteceu.</h2>
+				
+				<p>
+					<strong th:text="${error}" ></strong>
+					<span th:text="${message}"></span>
+				</p>
+				
+				<button class="primary" onclick="history.back()">
+					<span class="material-icons">arrow_back</span>
+					voltar
+				</button>
+			</div>
+</main>
+
 
 </body>
 </html>

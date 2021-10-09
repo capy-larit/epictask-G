@@ -78,12 +78,6 @@ public class User implements UserDetails {
 	}
 
 	@Override
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
