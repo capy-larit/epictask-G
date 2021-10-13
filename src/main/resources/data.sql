@@ -34,7 +34,7 @@ INSERT INTO USER_ROLES VALUES
 ;
 
 INSERT INTO user (name, email, password, githubuser) VALUES
-('Joao Carlos', 'joao@gmail.com', '123', 'joaocarloslima'),
+('Joao Carlos', 'joao@gmail.com', '$2a$12$iAFC7sgMoPSDNRV.6isc/.F1yT0R0L2tFypGPk6CQaRCFG/PiEjmO', 'joaocarloslima'),
 ('Carla Lopes', 'carla@gmail.com', '$2a$12$iAFC7sgMoPSDNRV.6isc/.F1yT0R0L2tFypGPk6CQaRCFG/PiEjmO', 'maria'),
 ('Fabio Cabrini', 'fabio@fiap.com.br', '$2a$12$iAFC7sgMoPSDNRV.6isc/.F1yT0R0L2tFypGPk6CQaRCFG/PiEjmO', 'pedro');
 

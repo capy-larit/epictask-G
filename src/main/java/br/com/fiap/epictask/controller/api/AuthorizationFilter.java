@@ -7,13 +7,25 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import br.com.fiap.epictask.model.User;
+import br.com.fiap.epictask.repository.UserRepository;
 import br.com.fiap.epictask.service.TokenService;
 
 public class AuthorizationFilter extends OncePerRequestFilter {
 	
+	
 	private TokenService tokenService;
+	
+	private UserRepository repository;
+	
+	public AuthorizationFilter(TokenService tokenService, UserRepository repository) {
+		this.tokenService = tokenService;
+		this.repository = repository;
+	}
 
 	@Override
 	protected void doFilterInternal(
@@ -23,9 +35,9 @@ public class AuthorizationFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		
 		String token = extractToken(request);
+		
 		System.out.println(token);
 		
-		tokenService = new TokenService();
 		boolean valid = tokenService.isValid(token);
 		
 		if (valid) {
@@ -37,9 +49,15 @@ public class AuthorizationFilter extends OncePerRequestFilter {
 	}
 
 	private void authenticateUser(String token) {
-		tokenService = new TokenService();
+		
 		Long id = tokenService.getUserId(token);
 		
+		User user = repository.findById(id).get();
+		
+		UsernamePasswordAuthenticationToken auth = 
+				new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+		
+		SecurityContextHolder.getContext().setAuthentication(auth);
 	}
 
 	private String extractToken(HttpServletRequest request) {

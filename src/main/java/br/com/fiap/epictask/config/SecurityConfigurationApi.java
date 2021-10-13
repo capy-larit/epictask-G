@@ -1,7 +1,5 @@
 package br.com.fiap.epictask.config;
 
-import javax.servlet.Filter;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +12,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import br.com.fiap.epictask.controller.api.AuthorizationFilter;
+import br.com.fiap.epictask.repository.UserRepository;
 import br.com.fiap.epictask.service.AuthenticationService;
+import br.com.fiap.epictask.service.TokenService;
 
 @Configuration
 @Order(1)
@@ -22,6 +22,12 @@ public class SecurityConfigurationApi extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	private AuthenticationService authenticationService;
+	
+	@Autowired
+	private TokenService tokenService;
+	
+	@Autowired
+	private UserRepository repository;
 	
 	@Override
 	@Bean
@@ -42,14 +48,14 @@ public class SecurityConfigurationApi extends WebSecurityConfigurerAdapter{
 			.antMatchers("/api/auth")
 				.permitAll()
 			.anyRequest()
-				.denyAll()
+				.authenticated()
 			.and()
 				.csrf()
 				.disable()
 			.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and()
-				.addFilterBefore(new AuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+				.addFilterBefore(new AuthorizationFilter(tokenService, repository), UsernamePasswordAuthenticationFilter.class)
 			;
 			
 	}

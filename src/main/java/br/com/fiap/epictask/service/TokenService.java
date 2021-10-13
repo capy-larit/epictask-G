@@ -21,8 +21,8 @@ public class TokenService {
 	@Value("${epictask.jwt.duration}")
 	private long duration;
 	
-	//@Value("${epictask.jwt.secret}")
-	private String secret = "secret";
+	@Value("${epictask.jwt.secret}")
+	private String secret;
 
 	public String getToken(Authentication authenticate) {
 		User user = (User) authenticate.getPrincipal();
